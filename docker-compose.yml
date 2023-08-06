@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
     prometheus:
-        image: prom/prometheus:v2.16.0
+        image: prom/prometheus:v2.37.9
         user: "1000:1000"
         restart: always
         volumes:
@@ -15,7 +15,7 @@ services:
             - 9090:9090
 
     alertmanager:
-        image: prom/alertmanager:v0.20.0
+        image: prom/alertmanager:v0.25.0
         restart: always
         volumes:
             # Config
@@ -24,7 +24,7 @@ services:
             - 9093:9093
         
     grafana:
-        image: grafana/grafana:6.6.2
+        image: grafana/grafana:10.0.3
         restart: always
         environment:
             GF_SECURITY_ADMIN_PASSWORD: panda
@@ -37,7 +37,7 @@ services:
             - 3000:3000
     
     nodeexporter:
-        image: prom/node-exporter:v1.0.1
+        image: prom/node-exporter:v1.6.1
         container_name: nodeexporter
         volumes:
             - /proc:/host/proc:ro
@@ -64,7 +64,7 @@ services:
             - 9115:9115
 
     cadvisor:
-        image: gcr.io/cadvisor/cadvisor:v0.38.7
+        image: gcr.io/cadvisor/cadvisor:v0.47.2
         container_name: cadvisor
         volumes:
             - /:/rootfs:ro
